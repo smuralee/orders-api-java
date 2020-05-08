@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: orders
+server:
+  port: 0
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.smuralee: DEBUG
+    org.hibernate: ERROR
+
+app:
+  features:
+    secretManagement: false
