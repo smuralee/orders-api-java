@@ -1,6 +1,6 @@
-# Orders API
+# Todos API
 
-- Endpoint : `/orders`
+- Endpoint : `/todos`
   - Supported operations : **GET**, **POST**, **PUT**, **DELETE**
 - Endpoint: `/info`
   - Returns the `hostname`and `host address`
