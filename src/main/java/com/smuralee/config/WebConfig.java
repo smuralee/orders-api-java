@@ -11,6 +11,6 @@ public class WebConfig {
 
     @Bean
     public Filter TracingFilter() {
-        return new AWSXRayServletFilter("todos");
+        return new AWSXRayServletFilter("todos-api");
     }
 }

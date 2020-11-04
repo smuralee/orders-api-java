@@ -1,8 +1,8 @@
 spring:
   application:
-    name: todos
+    name: todos-api
 server:
-  port: 0
+  port: 8080
 logging:
   level:
     root: ERROR

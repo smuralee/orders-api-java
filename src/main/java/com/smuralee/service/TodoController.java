@@ -1,5 +1,6 @@
 package com.smuralee.service;
 
+import com.amazonaws.xray.spring.aop.XRayEnabled;
 import com.smuralee.entity.Todo;
 import com.smuralee.errors.DataNotFoundException;
 import com.smuralee.repository.TodoRepository;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
+@XRayEnabled
 @RestController
 @RequestMapping("/todos")
 public class TodoController {

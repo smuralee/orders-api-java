@@ -36,9 +36,6 @@ class TodoControllerTest {
     @MockBean
     private TodoRepository repository;
 
-    @MockBean
-    private AppConfig appConfig;
-
     @Spy
     private List<Todo> todoList;
 
@@ -55,8 +52,6 @@ class TodoControllerTest {
                 new Todo(4L, "Book a taxi", true)
         );
 
-        when(appConfig.isSecretManagement()).thenReturn(false);
-
     }
 
     @Test
@@ -66,8 +61,8 @@ class TodoControllerTest {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/todos/")
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .accept(MediaType.APPLICATION_JSON_UTF8)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
                 .andExpect(
@@ -92,13 +87,13 @@ class TodoControllerTest {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/todos/".concat(String.valueOf(selectedId)))
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .accept(MediaType.APPLICATION_JSON_UTF8)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
                 .andExpect(
                         content()
-                                .json(this.mapper.writeValueAsString(todo.get()))
+                                .json(this.mapper.writeValueAsString(todo.orElse(null)))
                 );
 
         // Verify the method is called just once
@@ -124,8 +119,8 @@ class TodoControllerTest {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders.post("/todos/")
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .accept(MediaType.APPLICATION_JSON_UTF8)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
                         .content(mapper.writeValueAsString(payload))
         )
                 .andExpect(status().isOk())
@@ -164,8 +159,8 @@ class TodoControllerTest {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders.put("/todos/".concat(String.valueOf(selectedId)))
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .accept(MediaType.APPLICATION_JSON_UTF8)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
                         .content(mapper.writeValueAsString(payload))
         )
                 .andExpect(status().isOk())
@@ -185,8 +180,8 @@ class TodoControllerTest {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders.delete("/todos/".concat(String.valueOf(selectedId)))
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .accept(MediaType.APPLICATION_JSON_UTF8)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk());
 

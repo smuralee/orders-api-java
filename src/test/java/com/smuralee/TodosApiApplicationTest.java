@@ -16,12 +16,8 @@ class TodosApiApplicationTest {
     @Autowired
     private TodoController controller;
 
-    @Autowired
-    private AppConfig appConfig;
-
     @Test
     void contextLoads() {
         assertThat(controller).isNotNull();
-        assertThat(appConfig).isNotNull();
     }
 }
