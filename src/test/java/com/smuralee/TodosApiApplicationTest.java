@@ -1,7 +1,6 @@
 package com.smuralee;
 
-import com.smuralee.config.AppConfig;
-import com.smuralee.service.ProductOrderController;
+import com.smuralee.service.TodoController;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +11,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class ProductOrdersApiApplicationTest {
+class TodosApiApplicationTest {
 
     @Autowired
-    private ProductOrderController controller;
+    private TodoController controller;
 
     @Autowired
     private AppConfig appConfig;
 
     @Test
     void contextLoads() {
-
         assertThat(controller).isNotNull();
         assertThat(appConfig).isNotNull();
     }
-
 }

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: orders
+    name: todos
 server:
   port: 0
 logging:
@@ -9,7 +9,3 @@ logging:
     org.springframework.web: ERROR
     com.smuralee: DEBUG
     org.hibernate: ERROR
-
-app:
-  features:
-    secretManagement: false

@@ -2,10 +2,6 @@
 
 - Endpoint : `/todos`
   - Supported operations : **GET**, **POST**, **PUT**, **DELETE**
-- Endpoint: `/info`
-  - Returns the `hostname`and `host address`
-- Endpoint: `/config`
-  - Returns the custom configurations in YAML
 
 ## CLI Commands
 

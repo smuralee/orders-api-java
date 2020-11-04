@@ -8,11 +8,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "PRODUCT_ORDER")
+@Table(name = "TODO")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductOrder implements Serializable {
+public class Todo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -22,6 +22,6 @@ public class ProductOrder implements Serializable {
 
     private String description;
 
-    private String cost;
+    private boolean completed;
 
 }
