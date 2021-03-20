@@ -40,6 +40,5 @@ phases:
       - docker images
 artifacts:
   files:
-    - ./appspec.yaml
-    - ./taskdef.json
-  discard-paths: yes
+    - "appspec.yaml"
+    - "taskdef.json"
