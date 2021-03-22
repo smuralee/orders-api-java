@@ -1,20 +1,10 @@
 # Todos API
 
 - Endpoint : `/todos`
-  - Supported operations : **GET**, **POST**, **PUT**, **DELETE**
+    - Supported operations : **GET**, **POST**, **PUT**, **DELETE**
 
-## CLI Commands
+## Build the native image
 
 ```
-# Register the task definition
-aws ecs register-task-definition --cli-input-json file://taskdef.json
+mvn spring-boot:build-image
 ```
-
-## CodeBuild and CodeDeploy specifications
-* [buildspec.yml](buildspec.yml)
-* [taskdef.json](taskdef.json)
-
-## ENV variables needed for the CodeBuild
-* **AWS_REGION** : AWS Region
-* **ACCOUNT_ID** : AWS Account ID
-* **TASK_EXECUTION_ARN** : ECS task execution role
