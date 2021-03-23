@@ -60,7 +60,7 @@ class TodoControllerTest {
         when(repository.findAll()).thenReturn(todoList);
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/todos/")
+                MockMvcRequestBuilders.get("/todosv2/")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
         )
@@ -86,7 +86,7 @@ class TodoControllerTest {
         when(repository.findById(Mockito.anyLong())).thenReturn(todo);
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/todos/".concat(String.valueOf(selectedId)))
+                MockMvcRequestBuilders.get("/todosv2/".concat(String.valueOf(selectedId)))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
         )
@@ -118,7 +118,7 @@ class TodoControllerTest {
         when(repository.save(Mockito.any(Todo.class))).thenReturn(response);
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.post("/todos/")
+                MockMvcRequestBuilders.post("/todosv2/")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
                         .content(mapper.writeValueAsString(payload))
@@ -158,7 +158,7 @@ class TodoControllerTest {
         when(repository.save(Mockito.any(Todo.class))).thenReturn(response);
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.put("/todos/".concat(String.valueOf(selectedId)))
+                MockMvcRequestBuilders.put("/todosv2/".concat(String.valueOf(selectedId)))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
                         .content(mapper.writeValueAsString(payload))
@@ -179,7 +179,7 @@ class TodoControllerTest {
     void deleteById(final Long selectedId) throws Exception {
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.delete("/todos/".concat(String.valueOf(selectedId)))
+                MockMvcRequestBuilders.delete("/todosv2/".concat(String.valueOf(selectedId)))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
         )
