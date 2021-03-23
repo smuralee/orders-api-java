@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/todosv2")
+@RequestMapping("/native-todos")
 public class TodoController {
 
     private final TodoRepository repository;

@@ -30,17 +30,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 class TodoControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
-
-    @MockBean
-    private TodoRepository repository;
-
-    @Spy
-    private List<Todo> todoList;
-
     @Spy
     private final ObjectMapper mapper = new ObjectMapper();
+    @Autowired
+    private MockMvc mockMvc;
+    @MockBean
+    private TodoRepository repository;
+    @Spy
+    private List<Todo> todoList;
 
     @BeforeEach
     void setUp() {
@@ -60,7 +57,7 @@ class TodoControllerTest {
         when(repository.findAll()).thenReturn(todoList);
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/todosv2/")
+                MockMvcRequestBuilders.get("/native-todos/")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
         )
@@ -86,7 +83,7 @@ class TodoControllerTest {
         when(repository.findById(Mockito.anyLong())).thenReturn(todo);
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/todosv2/".concat(String.valueOf(selectedId)))
+                MockMvcRequestBuilders.get("/native-todos/".concat(String.valueOf(selectedId)))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
         )
@@ -118,7 +115,7 @@ class TodoControllerTest {
         when(repository.save(Mockito.any(Todo.class))).thenReturn(response);
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.post("/todosv2/")
+                MockMvcRequestBuilders.post("/native-todos/")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
                         .content(mapper.writeValueAsString(payload))
@@ -158,7 +155,7 @@ class TodoControllerTest {
         when(repository.save(Mockito.any(Todo.class))).thenReturn(response);
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.put("/todosv2/".concat(String.valueOf(selectedId)))
+                MockMvcRequestBuilders.put("/native-todos/".concat(String.valueOf(selectedId)))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
                         .content(mapper.writeValueAsString(payload))
@@ -179,7 +176,7 @@ class TodoControllerTest {
     void deleteById(final Long selectedId) throws Exception {
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.delete("/todosv2/".concat(String.valueOf(selectedId)))
+                MockMvcRequestBuilders.delete("/native-todos/".concat(String.valueOf(selectedId)))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
         )
