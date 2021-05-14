@@ -30,17 +30,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 class TodoControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
-
-    @MockBean
-    private TodoRepository repository;
-
-    @Spy
-    private List<Todo> todoList;
-
     @Spy
     private final ObjectMapper mapper = new ObjectMapper();
+    @Autowired
+    private MockMvc mockMvc;
+    @MockBean
+    private TodoRepository repository;
+    @Spy
+    private List<Todo> todoList;
 
     @BeforeEach
     void setUp() {

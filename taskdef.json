@@ -33,6 +33,12 @@
       "dockerLabels": {
         "name": "todos"
       },
+      "environment": [
+        {
+          "name": "CODEGURU_ROLE",
+          "value": "CODEGURU_ROLE_ARN"
+        }
+      ],
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
