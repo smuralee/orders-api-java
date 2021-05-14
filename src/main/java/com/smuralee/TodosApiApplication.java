@@ -9,7 +9,7 @@ import software.amazon.codeguruprofilerjavaagent.Profiler;
 public class TodosApiApplication {
 
     public static void main(String[] args) {
-        final String roleArn = System.getProperty("CODEGURU_ROLE");
+        final String roleArn = System.getenv("CODEGURU_ROLE");
         Profiler.builder()
                 .profilingGroupName("todos")
                 .awsCredentialsProvider(CrossAccountClient.getCredentials(roleArn, "todos-profiling"))
