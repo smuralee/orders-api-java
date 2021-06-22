@@ -1,0 +1,61 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "xray-daemon",
+      "image": "amazon/aws-xray-daemon",
+      "cpu": 32,
+      "memoryReservation": 256,
+      "portMappings": [
+        {
+          "containerPort": 2000,
+          "protocol": "udp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/todosv2",
+          "awslogs-region": "AWS_REGION",
+          "awslogs-stream-prefix": "todosv2"
+        }
+      }
+    },
+    {
+      "name": "todos-v2",
+      "image": "REPOSITORY_URI:IMAGE_TAG",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "dockerLabels": {
+        "name": "todos-v2"
+      },
+      "environment": [
+        {
+          "name": "CODEGURU_ROLE",
+          "value": "CODEGURU_ROLE_ARN"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/todosv2",
+          "awslogs-region": "AWS_REGION",
+          "awslogs-stream-prefix": "todosv2"
+        }
+      }
+    }
+  ],
+  "taskRoleArn": "TASK_EXECUTION_ARN",
+  "executionRoleArn": "TASK_EXECUTION_ARN",
+  "family": "todos-v2",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "512",
+  "memory": "2048"
+}
