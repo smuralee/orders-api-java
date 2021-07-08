@@ -26,7 +26,7 @@ phases:
       - IMAGE_TAG=${COMMIT_HASH:=latest}
       - aws ecr get-login-password | docker login --username AWS --password-stdin $REPOSITORY_URI
       - mvn spring-boot:build-image
-      - docker tag todos-api:1.0 $REPOSITORY_URI:$IMAGE_TAG .
+      - docker tag todos-api:1.0 $REPOSITORY_URI:$IMAGE_TAG
       - echo Completed container image built and tagging on `date`
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Completed container image push on `date`
